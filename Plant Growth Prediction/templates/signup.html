@@ -1,0 +1,151 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+
+<style>
+  body {
+    background-color: #f8f9fa;
+    /* Light gray background */
+  }
+
+  .signup-container {
+    margin-top: 1rem;
+    /* Reduced margin */
+    margin-bottom: 3rem;
+  }
+
+  .signup-card {
+    border: none;
+    border-radius: 1.5rem;
+    /* More rounded corners */
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.10);
+    /* Softer shadow */
+    overflow: hidden;
+    /* For the rounded corners to work properly */
+  }
+
+  .signup-card-body {
+    padding: 3rem;
+    /* Increased padding */
+  }
+
+  .form-group {
+    margin-bottom: 1.5rem;
+    /* Increased spacing */
+  }
+
+  .form-control {
+    border-radius: 0.75rem;
+    /* Rounded form fields */
+    border: 1px solid #ced4da;
+    /* Lighter border */
+    padding: 0.75rem;
+    /* More padding inside fields */
+  }
+
+  .btn-success {
+    background-color: #28a745;
+    /* Theme color */
+    border-color: #28a745;
+    transition: background-color 0.3s ease;
+    /* Hover transition */
+  }
+
+  .btn-success:hover {
+    background-color: #218838;
+    /* Darker shade on hover */
+    border-color: #1e7e34;
+  }
+
+  .text-center a {
+    color: #007bff;
+    /* Theme link color */
+  }
+
+  .text-center a:hover {
+    text-decoration: none;
+    /* Remove underline on hover */
+  }
+
+  .title-section {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .image-section {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .image-section img {
+    max-width: 100%;
+    /* Responsive image */
+    height: auto;
+    border-radius: 10px;
+    /* More image rounded corners */
+    box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.08);
+    /* Image shadow */
+  }
+
+  .py-5 {
+    padding-top: 1rem !important;
+    /* Reduced vertical padding on parent section */
+    padding-bottom: 3rem !important;
+  }
+</style>
+
+<section class="py-5">
+  <div class="container signup-container">
+    <div class="row justify-content-center">
+      <div class="col-md-8 col-lg-6">
+        <div class="card signup-card">
+          <div class="card-body signup-card-body">
+
+            <!-- Title and Welcome Section -->
+            <div class="title-section">
+              <h3 class="card-title">Join Machine Learning and AI Today!</h3>
+              <p class="text-muted">Create an account and start sharing your culinary creations.</p>
+            </div>
+
+            <!-- Image Example -->
+            <div class="image-section">
+              <img src="{{ url_for('static', filename='images/signup-image.png') }}" alt="Sign up to see delicious meals"
+                class="img-fluid">
+            </div>
+
+            <!-- Sign up Form -->
+            <form method="POST" action="{{ url_for('signup') }}">
+              <div class="form-group">
+                <label for="name">Full Name</label>
+                <input type="text" class="form-control" id="name" name="name" required>
+              </div>
+              <div class="form-group">
+                <label for="email">Email address</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+              </div>
+              <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" class="form-control" id="password" name="password" required>
+              </div>
+              <div class="form-group">
+                <label for="confirm_password">Confirm Password</label>
+                <input type="password" class="form-control" id="confirm_password" name="confirm_password" required>
+              </div>
+              <div class="d-grid gap-2">
+                <button type="submit" class="btn btn-success btn-block">Sign Up</button>
+              </div>
+            </form>
+
+            <!-- Log in Link -->
+            <p class="text-center mt-3" align="center">
+              Already have an account? <a href="{{ url_for('login') }}">Log in</a>
+            </p>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% endblock %}

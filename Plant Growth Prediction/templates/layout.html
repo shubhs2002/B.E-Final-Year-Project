@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>{% if title %}{{ title }} {% else %} CROP GROWTH PREDICTION {% endif %}</title>
+    <link rel="shortcut icon" href="{{ url_for('static', filename='images/favicon.ico') }}" />
+
+    <!-- Mobile Metatags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+
+    <!-- Custom CSS -->
+    <link href="{{ url_for('static', filename='css/style.css') }}" rel='stylesheet' type='text/css' />
+
+    <style>
+        /* Overall Styles */
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa; /* Light gray background */
+            color: #343a40;         /* Dark gray text */
+        }
+
+        /* Navigation Bar */
+        .navbar {
+            background-color: #343a40 !important; /* Dark background */
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+        }
+
+        .navbar-brand,
+        .nav-link {
+            color: white !important;      /* White text */
+            font-weight: 500;
+            transition: color 0.3s ease; /* Smooth transition on hover */
+        }
+
+        .navbar-brand:hover,
+        .nav-link:hover {
+            color: #adb5bd !important;   /* Lighter gray on hover */
+        }
+
+        /* Jumbotron (Hero Section) */
+        .jumbotron {
+            background-color: #e9ecef;    /* Slightly lighter gray */
+            padding: 4rem 2rem;          /* More padding */
+            margin-bottom: 2rem;
+            border-radius: 0.5rem;        /* Rounded corners */
+        }
+
+        .jumbotron h1 {
+            font-weight: bold;
+            color: #212529;         /* Darker text for title */
+        }
+
+        .btn-primary {
+            background-color: #007bff;   /* Bootstrap primary color */
+            border-color: #007bff;
+        }
+
+        .btn-primary:hover {
+            background-color: #0069d9;   /* Darker shade on hover */
+            border-color: #0062cc;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #343a40;  /* Dark background */
+            color: #fff;              /* White text */
+            text-align: center;
+            padding: 2rem 0;            /* More padding */
+        }
+
+        footer a {
+            color: #fff;              /* White link color */
+            text-decoration: none;    /* Remove underline */
+            transition: color 0.3s ease; /* Smooth hover transition */
+        }
+
+        footer a:hover {
+            color: #adb5bd;          /* Lighter gray on hover */
+            text-decoration: underline;  /* Add underline on hover */
+        }
+
+        /* Utility classes for basic layout */
+        .py-5 {
+            padding-top: 3rem !important;
+            padding-bottom: 3rem !important;
+        }
+    </style>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('home') }}">
+                <img src="{{ url_for('static', filename='images/logo.jpg') }}" width="90" height="55" class="d-inline-block align-top" alt="Logo">
+                CROP GROWTH PREDICTION
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('home') }}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('disease_prediction') }}">Plant_Growth</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url_for('logout') }}">Logout</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="container">
+        <div class="jumbotron text-center"><br>
+            <h1 class="display-4">Welcome to Crop Growth Prediction</h1>
+            <p class="lead">Your resource for predicting and managing plant growth effectively.</p>
+            <hr class="my-4">
+            <p>Start exploring now!</p>
+            <a class="btn btn-primary btn-lg" href="{{ url_for('disease_prediction') }}" role="button">Get Started</a>
+        </div>
+    </div>
+
+    {% block body %}
+    {% endblock %}
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <span class="text-muted">Made with ❤️ by COLLEGE STUDENTS. © Copyright</span>
+        </div>
+    </footer>
+
+</body>
+</html>

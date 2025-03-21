@@ -1,0 +1,54 @@
+{% extends 'layout.html' %} {% block body %}
+
+
+<div class="container py-2 mx-auto my-50 h-10 " style="margin: 9rem;">
+    <div class="row">
+        <div class="col-sm py-2 py-md-3">
+            <div class="card card-body" style="justify-content: center; background-color:blanchedalmond">
+                {% if disease %}
+                <h3 class="text-center" style="color: black; font-size: 24px;">Growth Details</h3>
+                <ul class="text-center" style="color: black; font-size: 22px; list-style: none; padding: 0;">
+                    {% for key, value in disease.items() %}
+                    <li><strong>{{ key }}:</strong> {{ value }}</li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <h3 class="text-center" style="color: black; font-size: 24px;">Input Image</h3>
+                {% if image_filename %}
+                <h3 class="text-center" style="color: black; font-size: 24px;"></h3>
+                <div class="text-center">
+                    <img src="{{ url_for('static', filename='input/' + image_filename) }}" alt="Uploaded Plant Image"
+                        style="max-width: 400px; border: 2px solid black; border-radius: 10px;">
+                </div>
+                {% endif %}
+                <h3 class="text-center" style="color: black; font-size: 24px;">Predicted Growth Stages</h3>
+
+                {% if image_path %}
+                <h3 class="text-center" style="color: black; font-size: 24px;">Plant Growth Details</h3>
+                <ul class="text-center" style="color: black; font-size: 22px; list-style: none; padding: 0;">
+                    {% for key, value in image_path.items() %}
+                    <li><strong>{{ key }}:</strong>
+                        <div class="text-center">
+                            <img src="{{ url_for('static', filename='train/' + value) }}" alt="Uploaded Plant Image"
+                                style="max-width: 400px; border: 2px solid black; border-radius: 10px;">
+                        </div>
+                    </li>
+                    {% endfor %}
+                </ul>
+                {% endif %}
+                <!-- 
+{% if suggestion %}
+    <h3 class="text-center" style="color: black; font-size: 24px;">Suggestions</h3>
+    <ul class="text-center" style="color: black; font-size: 22px; list-style: none; padding: 0;">
+        {% for key, value in suggestion.items() %}
+            <li><strong>{{ key }}:</strong> {{ value }}</li>
+        {% endfor %}
+    </ul>
+{% endif %} -->
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
